@@ -40,7 +40,7 @@
                             <TextBox x:Name="SearchMovieGenreTextBox" Width="150" Height="20" ToolTip="Genre"/>
                         </StackPanel>
                         <Button Content="Search" Width="75" Height="20" Margin="10,35,0,0" Click="Movie_Search_Button_Click"/>
-                        <Button x:Name="GetAllBooks" Content="Get all books" Width="75" Height="20" Click="GetAllBooks_Click"/>
+                        <Button x:Name="GetAllMovies" Content="Get all movies" Width="75" Height="20" Click="GetAllMovies_Click"/>
                     </WrapPanel>
 
 
@@ -51,13 +51,14 @@
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
                             <DataGridTextColumn Header="Director" Binding="{Binding Author}" />
                             <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
+                            <DataGridTextColumn Header="Available copies" Binding="{Binding AvailableCopies}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
                     <!-- CRUD Buttons -->
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
                         <Button x:Name="AddMovieButton" Content="Add" Margin="5" Click="AddMovieButton_Click"/>
-                        <Button x:Name="EditMovieButton" Content="Edit" Margin="5"/>
+                        <Button x:Name="EditMovieButton" Content="Edit" Margin="5" Click="EditMovieButton_Click"/>
                         <Button x:Name="DeleteMovieButton" Content="Delete" Margin="5" Click="DeleteMovieButton_Click"/>
                     </StackPanel>
                 </Grid>
@@ -104,8 +105,8 @@
                     <!-- CRUD Buttons -->
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                         <Button x:Name="AddUserButton" Content="Add" Margin="5" Click="AddUserButton_Click"/>
-                        <Button x:Name="EditUserButton" Content="Edit" Margin="5"/>
-                        <Button x:Name="DeleteUserButton" Content="Delete" Margin="5"/>
+                        <Button x:Name="EditUserButton" Content="Edit" Margin="5" Click="EditUserButton_Click"/>
+                        <Button x:Name="DeleteUserButton" Content="Delete" Margin="5" Click="DeleteUserButton_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

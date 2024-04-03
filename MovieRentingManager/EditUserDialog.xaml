@@ -1,22 +1,17 @@
-﻿<Window x:Class="MovieRentingManager.AddBookDialog"
+﻿<Window x:Class="MovieRentingManager.EditUserDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieRentingManager"
         mc:Ignorable="d"
-        Title="Add Book" Height="300" Width="250">
+        Title="EditUserDialog" Height="300" Width="250">
     <StackPanel Margin="10">
-        <Label>Title</Label>
-        <TextBox x:Name="titleTextBox"/>
-        <Label>Author</Label>
-        <TextBox x:Name="authorTextBox" />
-        <Label>Genre</Label>
-        <TextBox x:Name="genreTextBox" />
-        <Label>Year</Label>
-        <TextBox x:Name="yearTextBox" />
-        <Label>Number of copies</Label>
-        <TextBox x:Name="availableCopiesTextBox" />
+        <Label>Name</Label>
+        <TextBox x:Name="nameTextBox"/>
+        <Label>Email</Label>
+        <TextBox x:Name="emailTextBox" />
+        <Label/>
         <Button Content="Save" Click="SaveButton_Click"/>
     </StackPanel>
 </Window>

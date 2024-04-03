@@ -87,9 +87,7 @@ namespace MovieRentingManager
 
         public MainWindow()
         {
-
             DataContext = this;
-
 
             _bookService = new BookService();
             _userService = new UserService();
@@ -109,7 +107,7 @@ namespace MovieRentingManager
 
         private void AddMovieButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddBookDialog();
+            var dialog = new AddMovieDialog();
             if (dialog.ShowDialog() == true)
             {
                 var book = dialog.NewBook;
@@ -143,7 +141,7 @@ namespace MovieRentingManager
             }
         }
 
-        private void GetAllBooks_Click(object sender, RoutedEventArgs e)
+        private void GetAllMovies_Click(object sender, RoutedEventArgs e)
         {
             Books = new ObservableCollection<Book>(_bookService.GetBooks());
         }
@@ -157,6 +155,32 @@ namespace MovieRentingManager
                 _userService.AddUser(user);
                 Users.Add(user);
             }
+        }
+
+        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Implement edit user method
+            //Hint check how 
+        }
+
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Implement delete user logic
+        }
+
+        private void EditMovieButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (MoviesDataGrid.SelectedItem == null || MoviesDataGrid.SelectedItem is not Book)
+            {
+                //show dialog box with error
+                MessageBox.Show("Please select a book to delete");
+            }
+
+            Book book = (Book)MoviesDataGrid.SelectedItem;
+
+            EditMovieDialog dialog = new EditMovieDialog(book);
+            dialog.ShowDialog();
         }
     }
 }

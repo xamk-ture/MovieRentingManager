@@ -16,30 +16,18 @@ using System.Windows.Shapes;
 namespace MovieRentingManager
 {
     /// <summary>
-    /// Interaction logic for AddBookDialog.xaml
+    /// Interaction logic for EditUserDialog.xaml
     /// </summary>
-    public partial class AddBookDialog : Window
+    public partial class EditUserDialog : Window
     {
-        public Book? NewBook { get; private set; }
-
-
-        public AddBookDialog()
+        public EditUserDialog()
         {
             InitializeComponent();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            NewBook = new Book
-            {
-                Title = titleTextBox.Text,
-                Author = authorTextBox.Text,
-                Genre = genreTextBox.Text,
-                Year = int.TryParse(yearTextBox.Text, out int year) ? year : 0,
-                AvailableCopies = int.TryParse(availableCopiesTextBox.Text, out int availableCopies) ? availableCopies : 0
-            };
 
-            this.DialogResult = true;
         }
     }
 }
