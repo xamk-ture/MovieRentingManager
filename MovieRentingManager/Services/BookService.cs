@@ -112,7 +112,7 @@ namespace MovieRentingManager.Services
 
         private int GetNextId()
         {
-            return books.Count + 1;
+            return books.Max(x => x.Id) + 1;
         }
     }
 }
