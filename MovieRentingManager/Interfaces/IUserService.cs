@@ -12,5 +12,7 @@ namespace MovieRentingManager.Interfaces
         bool RemoveUser(int userId);
 
         bool UpdateUser(Models.User user);
+
+        IEnumerable<Models.User> GetUsers();
     }
 }

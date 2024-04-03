@@ -53,5 +53,10 @@ namespace MovieRentingManager.Services
 
             return true;
         }
+
+        public IEnumerable<User> GetUsers()
+        {
+            return _users;
+        }
     }
 }

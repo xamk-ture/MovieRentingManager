@@ -17,7 +17,7 @@ namespace MovieRentingManager.Interfaces
 
         IEnumerable<Book> FindBook(string title, string author, string genre, int? year);
 
-        Book FindBook(int bookId);
+        Book? FindBook(int bookId);
 
         List<Book> GetBooks();
     }

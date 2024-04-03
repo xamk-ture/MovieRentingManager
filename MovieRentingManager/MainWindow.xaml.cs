@@ -21,7 +21,8 @@ namespace MovieRentingManager
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-
+        //Here we have the services that we will use to interact with the data
+        //note that they are readonly, meaning that they cannot be changed after the constructor
         private readonly IBookService _bookService;
         private readonly IUserService _userService;
         private readonly ILoanService _loanService;
@@ -37,10 +38,20 @@ namespace MovieRentingManager
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Backing field for Books
+
+        //TODO: Create new observable collections for Movies that is similar like the one for Books/Users
+        //Note that you need to have a backing field for the property and the property itself
+        //and the property has setter and getter like the one for Books/Users
+
+
+        /// <summary>
+        /// Backing field for books observable collection
+        /// </summary>
         private ObservableCollection<Book> _books;
 
-        // Public property for Books
+       /// <summary>
+       /// Public property for the Books observable collection
+       /// </summary>
         public ObservableCollection<Book> Books
         {
             get => _books;
@@ -69,21 +80,6 @@ namespace MovieRentingManager
             }
         }
 
-        private ObservableCollection<LoanInfo> _loans;
-
-        public ObservableCollection<LoanInfo> Loans
-        {
-            get => _loans;
-            set
-            {
-                if (_loans != value)
-                {
-                    _loans = value;
-                    OnPropertyChanged(nameof(Loans));
-                }
-            }
-        }
-
 
         public MainWindow()
         {
@@ -93,12 +89,17 @@ namespace MovieRentingManager
             _userService = new UserService();
 
             Books = new ObservableCollection<Book>(_bookService.GetBooks());
+            Users = new ObservableCollection<User>(_userService.GetUsers());
+
+            //TODO: Initialize the observable collections for Movies
 
             InitializeComponent();
         }
 
         private void Movie_Search_Button_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Change this to use your movie service
+
             int.TryParse(SearchMovieYearTextBox.Text, out int year);
             var books =_bookService.FindBook(SearchMovieTitleTextBox.Text, SearchMovieDirectorTextBox.Text, SearchMovieGenreTextBox.Text, year);
 
@@ -108,6 +109,10 @@ namespace MovieRentingManager
         private void AddMovieButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new AddMovieDialog();
+
+
+            //TODO: Change this to use your movie service and that it uses Movie object instead Book object
+
             if (dialog.ShowDialog() == true)
             {
                 var book = dialog.NewBook;
@@ -118,13 +123,19 @@ namespace MovieRentingManager
 
         private void DeleteMovieButton_Click(object sender, RoutedEventArgs e)
         {
-            if(MoviesDataGrid.SelectedItem == null || MoviesDataGrid.SelectedItem is not Book)
+
+            //TODO: Change this to use Movie object instead of Book object and make it use your movie service
+            //For example change this MoviesDataGrid.SelectedItem is not Book to MoviesDataGrid.SelectedItem is not Movie
+
+
+            //this checks if the selected item is null or not a book and if the conditions are met it shows a dialog box with an error
+            if (MoviesDataGrid.SelectedItem == null || MoviesDataGrid.SelectedItem is not Book)
             {
                 //show dialog box with error
                 MessageBox.Show("Please select a book to delete");
             }
 
-            //convert selected item to book type
+            //convert/cast selected item to book type
             Book book = (Book)MoviesDataGrid.SelectedItem;
 
             //tries to remove book and returns true if successful
@@ -143,6 +154,8 @@ namespace MovieRentingManager
 
         private void GetAllMovies_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Change this to use your movie service
+            //it should look like this: Movies = new ObservableCollection<Movie>(_movieService.GetMovies());
             Books = new ObservableCollection<Book>(_bookService.GetBooks());
         }
 
@@ -170,6 +183,7 @@ namespace MovieRentingManager
 
         private void EditMovieButton_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Change this to use Movie object instead of Book object and make it use your movie service
 
             if (MoviesDataGrid.SelectedItem == null || MoviesDataGrid.SelectedItem is not Book)
             {
@@ -179,8 +193,12 @@ namespace MovieRentingManager
 
             Book book = (Book)MoviesDataGrid.SelectedItem;
 
+            //show edit dialog
             EditMovieDialog dialog = new EditMovieDialog(book);
             dialog.ShowDialog();
+
+            //update the books list so it shows the changes in ui
+            Books = new ObservableCollection<Book>(Books);
         }
     }
 }

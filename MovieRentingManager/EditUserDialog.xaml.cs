@@ -27,7 +27,7 @@ namespace MovieRentingManager
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO: Implement the logic to update the user
         }
     }
 }

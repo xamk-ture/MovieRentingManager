@@ -30,6 +30,7 @@ namespace MovieRentingManager
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Change this to use your Movie class
             NewBook = new Book
             {
                 Title = titleTextBox.Text,

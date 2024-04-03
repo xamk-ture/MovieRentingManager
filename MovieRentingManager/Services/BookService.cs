@@ -44,29 +44,29 @@ namespace MovieRentingManager.Services
 
         public IEnumerable<Book> FindBook(string title, string author, string genre, int? year)
         {
-            var query = books.AsEnumerable();
+            IQueryable<Book> query = books.AsQueryable();
 
             if (!string.IsNullOrEmpty(title))
             {
-                query = query.Where(b => b.Title.Contains(title));
+                query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(author))
             {
-                query = query.Where(b => b.Author.Contains(author));
+                query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(genre))
             {
-                query = query.Where(b => b.Genre.Contains(genre));
+                query = query.Where(b => b.Genre.ToLower().Contains(genre.ToLower()));
             }
 
-            if (year != null)
+            if (year != null && year > 0)
             {
                 query = query.Where(b => b.Year == year);
             }
 
-            return query;
+            return query.ToList();
         }
 
         public Book? FindBook(int bookId)
@@ -81,7 +81,7 @@ namespace MovieRentingManager.Services
 
         public bool IsBookAvailable(int bookId)
         {
-            Book book = books.FirstOrDefault(b => b.Id == bookId);
+            Book? book = books.FirstOrDefault(b => b.Id == bookId);
 
             if (book == null)
             {
