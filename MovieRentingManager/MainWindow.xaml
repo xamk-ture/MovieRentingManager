@@ -38,22 +38,22 @@
                             <Label Content="Genre" />
                             <TextBox x:Name="SearchMovieGenreTextBox" Width="150" Height="20" ToolTip="Genre"/>
                         </StackPanel>
-                        <Button Content="Search" Width="75" Height="20" Margin="10,35,0,0"/>
+                        <Button Content="Search" Width="75" Height="20" Margin="10,35,0,0" Click="Movie_Search_Button_Click"/>
                     </WrapPanel>
 
                     <!-- DataGrid -->
-                    <DataGrid x:Name="MoviesDataGrid" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False">
+                    <DataGrid x:Name="MoviesDataGrid"  Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn Header="Director" Binding="{Binding Director}" />
+                            <DataGridTextColumn Header="Director" Binding="{Binding Author}" />
                             <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
                     <!-- CRUD Buttons -->
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
-                        <Button x:Name="AddMovieButton" Content="Add" Margin="5"/>
+                        <Button x:Name="AddMovieButton" Content="Add" Margin="5" Click="AddMovieButton_Click"/>
                         <Button x:Name="EditMovieButton" Content="Edit" Margin="5"/>
                         <Button x:Name="DeleteMovieButton" Content="Delete" Margin="5"/>
                     </StackPanel>
