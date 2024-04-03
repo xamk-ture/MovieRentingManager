@@ -12,9 +12,15 @@ namespace MovieRentingManager.Services
     {
         private List<User> _users = new List<User>();
 
+        public UserService()
+        {
+            //Add test user
+            _users.Add(new User { Id = 1, Name = "John Doe", Email = "" });
+        }
+
         public bool RemoveUser(int userId)
         {
-            User userToRemove = _users.FirstOrDefault(u => u.Id == userId);
+            User? userToRemove = _users.FirstOrDefault(u => u.Id == userId);
 
             if (userToRemove == null)
             {
@@ -28,7 +34,7 @@ namespace MovieRentingManager.Services
 
         public bool UpdateUser(User user)
         {
-            User userToUpdate = _users.FirstOrDefault(u => u.Id == user.Id);
+            User? userToUpdate = _users.FirstOrDefault(u => u.Id == user.Id);
 
             if (userToUpdate == null)
             {

@@ -27,9 +27,11 @@ namespace MovieRentingManager
         private readonly ILoanService _loanService;
 
         // Implement the INotifyPropertyChanged interface
+        //No need to touch this
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Method to call when a property changes
+        //No need to touch this
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

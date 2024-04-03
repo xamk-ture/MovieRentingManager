@@ -14,6 +14,7 @@ namespace MovieRentingManager.Services
 
         public BookService()
         {
+            //Add some initial books
             books.Add(new Book
             {
                 Id = 1,
