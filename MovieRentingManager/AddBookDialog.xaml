@@ -15,8 +15,8 @@
         <TextBox x:Name="genreTextBox" />
         <Label>Year</Label>
         <TextBox x:Name="yearTextBox" />
-        <Label>ISBN</Label>
-        <TextBox x:Name="isbnTextBox" />
+        <Label>Number of copies</Label>
+        <TextBox x:Name="availableCopiesTextBox" />
         <Button Content="Save" Click="SaveButton_Click"/>
     </StackPanel>
 </Window>

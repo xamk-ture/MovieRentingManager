@@ -21,7 +21,6 @@ namespace MovieRentingManager.Services
                 Author = "J.R.R. Tolkien",
                 Genre = "Fantasy",
                 Year = 1954,
-                ISBN = "978-3-16-148410-0"
             });
 
             books.Add(new Book
@@ -31,7 +30,6 @@ namespace MovieRentingManager.Services
                 Author = "J.K. Rowling",
                 Genre = "Fantasy",
                 Year = 1997,
-                ISBN = "978-3-16-148410-1"
             });
         }
 
@@ -41,6 +39,38 @@ namespace MovieRentingManager.Services
             books.Add(book);
 
             return true;
+        }
+
+        public IEnumerable<Book> FindBook(string title, string author, string genre, int? year)
+        {
+            var query = books.AsEnumerable();
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                query = query.Where(b => b.Title.Contains(title));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                query = query.Where(b => b.Author.Contains(author));
+            }
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                query = query.Where(b => b.Genre.Contains(genre));
+            }
+
+            if (year != null)
+            {
+                query = query.Where(b => b.Year == year);
+            }
+
+            return query;
+        }
+
+        public Book? FindBook(int bookId)
+        {
+            return books.FirstOrDefault(b => b.Id == bookId);
         }
 
         public List<Book> GetBooks()
@@ -61,6 +91,20 @@ namespace MovieRentingManager.Services
             {
                 return false;
             }
+
+            return true;
+        }
+
+        public bool RemoveBook(int bookId)
+        {
+            Book? bookToRemove = books.FirstOrDefault(b => b.Id == bookId);
+
+            if(bookToRemove == null)
+            {
+                return false;
+            }
+
+            books.Remove(bookToRemove);
 
             return true;
         }

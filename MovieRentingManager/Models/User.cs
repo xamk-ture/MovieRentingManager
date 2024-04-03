@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieRentingManager.Models
 {
-    public class BaseObject
+    public class User : BaseObject
     {
-        public int Id { get; set; }
+        public required string Name { get; set; }
+        public required string Email { get; set; }
     }
 }

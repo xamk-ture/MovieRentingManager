@@ -36,7 +36,7 @@ namespace MovieRentingManager
                 Author = authorTextBox.Text,
                 Genre = genreTextBox.Text,
                 Year = int.TryParse(yearTextBox.Text, out int year) ? year : 0,
-                ISBN = isbnTextBox.Text
+                AvailableCopies = int.TryParse(availableCopiesTextBox.Text, out int availableCopies) ? availableCopies : 0
             };
 
             this.DialogResult = true;

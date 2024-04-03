@@ -7,8 +7,7 @@ namespace MovieRentingManager.Models
         public string Author { get; set; }
         public string Genre { get; set; }
         public int Year { get; set; }
-        public string ISBN { get; set; }
 
-        public int AvailableCopies { get; set; } = 2;
+        public int AvailableCopies { get; set; }
     }
 }

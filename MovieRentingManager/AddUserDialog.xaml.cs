@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieRentingManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,26 @@ namespace MovieRentingManager
     /// <summary>
     /// Interaction logic for AddUser.xaml
     /// </summary>
-    public partial class AddUser : Window
+    public partial class AddUserDialog : Window
     {
-        public AddUser()
+
+        public User? NewUser { get; private set; }
+
+
+        public AddUserDialog()
         {
             InitializeComponent();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewUser = new User
+            {
+                Name = nameTextBox.Text,
+                Email = emailTextBox.Text
+            };
+
+            this.DialogResult = true;
         }
     }
 }

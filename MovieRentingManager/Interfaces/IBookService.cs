@@ -13,6 +13,12 @@ namespace MovieRentingManager.Interfaces
 
         bool AddBook(Book book);
 
+        bool RemoveBook(int bookId);
+
+        IEnumerable<Book> FindBook(string title, string author, string genre, int? year);
+
+        Book FindBook(int bookId);
+
         List<Book> GetBooks();
     }
 }
