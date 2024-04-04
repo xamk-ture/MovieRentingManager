@@ -100,6 +100,8 @@ namespace MovieRentingManager
         {
             //TODO: Change this to use your movie service
 
+
+            //TODO: optimise this code to use less lines of code
             int.TryParse(SearchMovieYearTextBox.Text, out int year);
             var books =_bookService.FindBook(SearchMovieTitleTextBox.Text, SearchMovieDirectorTextBox.Text, SearchMovieGenreTextBox.Text, year);
 
