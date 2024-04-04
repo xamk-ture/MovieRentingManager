@@ -45,6 +45,7 @@
 
 
                     <!-- DataGrid -->
+                    <!--TODO: Change the ItemsSource to Binding Movies or whatever is the name of your ObservableCollection that contains Movies objects-->
                     <DataGrid x:Name="MoviesDataGrid" ItemsSource="{Binding Books}" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />

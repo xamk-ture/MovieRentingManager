@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieRentingManager.Services
 {
@@ -42,18 +43,20 @@ namespace MovieRentingManager.Services
             return true;
         }
 
-        public IEnumerable<Book> FindBook(string title, string author, string genre, int? year)
+        public IEnumerable<Book> FindBook(string title, string director, string genre, int? year)
         {
+            //Build a new queryable object from the list of books
             IQueryable<Book> query = books.AsQueryable();
 
+            //Add query filter based on the input parameters
             if (!string.IsNullOrEmpty(title))
             {
                 query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
             }
 
-            if (!string.IsNullOrEmpty(author))
+            if (!string.IsNullOrEmpty(director))
             {
-                query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
+                query = query.Where(b => b.Author.ToLower().Contains(director.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(genre))

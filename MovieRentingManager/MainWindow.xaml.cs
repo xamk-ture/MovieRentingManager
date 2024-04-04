@@ -110,7 +110,6 @@ namespace MovieRentingManager
         {
             var dialog = new AddMovieDialog();
 
-
             //TODO: Change this to use your movie service and that it uses Movie object instead Book object
 
             if (dialog.ShowDialog() == true)
