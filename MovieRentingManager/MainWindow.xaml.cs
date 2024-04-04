@@ -54,12 +54,16 @@ namespace MovieRentingManager
        /// </summary>
         public ObservableCollection<Book> Books
         {
-            get => _books;
+            get
+            {
+                return _books;
+            }
             set
             {
                 if (_books != value)
                 {
                     _books = value;
+                   
                     OnPropertyChanged(nameof(Books)); // Notify that Books has changed
                 }
             }
@@ -69,7 +73,10 @@ namespace MovieRentingManager
 
         public ObservableCollection<User> Users
         {
-            get => _users;
+            get
+            {
+                return _users;
+            }
             set
             {
                 if (_users != value)
